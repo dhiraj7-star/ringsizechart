@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>UK Ring Size Tool — RingSizeFind</title>
+<meta name="description" content="Interactive UK ring size measurement tool — measure by string length, existing ring, or diameter. Accessible, printable, and mobile-friendly." />
+<link rel="canonical" href="https://ringsizefind.com/uk-ring-size-tool.html" />
+<style>
+  :root{--card-bg:#fff;--muted:#666;--accent:#ffbf00;--shadow:0 6px 18px rgba(16,24,40,0.08);}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;color:#111;padding:18px;background:#f6f8fb;}
+  .container{max-width:980px;margin:0 auto;}
+  .card{background:var(--card-bg);border-radius:14px;padding:20px;box-shadow:var(--shadow);}
+  header{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+  header h1{font-size:20px;margin:0;}
+  .grid{display:grid;grid-template-columns:1fr;gap:18px;}
+  @media(min-width:860px){.grid{grid-template-columns:1fr 420px;}}
+  .tabs{display:flex;gap:8px;border-bottom:2px solid #e9eef8;padding-bottom:8px;margin-bottom:12px;flex-wrap:wrap;}
+  .tab{background:transparent;border:0;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600;}
+  .tab[aria-pressed="true"]{background:var(--accent);color:#000;}
+  .panel{display:none;}
+  .panel[aria-hidden="false"]{display:block;}
+  .note{background:#fbfdff;border-left:4px solid #e6f2ff;padding:12px;border-radius:8px;margin-top:10px;color:var(--muted);}
+  label{display:block;font-weight:600;margin-bottom:6px;}
+  input[type=number], select{width:100%;padding:10px;border:1px solid #d7dbe7;border-radius:8px;font-size:15px;}
+  .diameter-wrap{text-align:center;margin-top:12px;}
+  #diameter-circle{width:120px;height:120px;border:3px dashed #cbd5e1;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--muted);}
+  input[type=range]{width:100%;}
+  .result{background:#fbfbff;padding:14px;border-radius:10px;border:1px solid #eef4ff;}
+  .result h2{margin:0 0 8px 0;font-size:18px;}
+  .size-big{font-size:42px;font-weight:800;margin:6px 0;color:#0b3b76;letter-spacing:0.5px;}
+  .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
+  .detail{background:#fff;padding:8px;border-radius:8px;text-align:center;border:1px solid #f0f4ff;}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  button.btn{background:#0b66c2;color:#fff;border:0;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:700;}
+  button.ghost{background:transparent;color:#0b66c2;border:1px solid #d7e6ff;}
+  small{color:var(--muted);}
+  .links{margin-top:12px;}
+  a{color:#0b66c2}
+  .print-note{font-size:13px;color:var(--muted);margin-top:8px;}
+  .footer{margin-top:18px;font-size:13px;color:var(--muted);}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="main" aria-labelledby="tool-title">
+      <header>
+        <h1 id="tool-title">UK Ring Size Measurement Tool</h1>
+        <div><small>Quick • Accessible • Printable</small></div>
+      </header>
+
+      <div class="grid" id="tool-grid">
+        <div>
+          <div class="tabs" role="tablist" aria-label="Measurement methods">
+            <button class="tab" role="tab" aria-pressed="true" data-method="string" id="tab-string">String / Paper</button>
+            <button class="tab" role="tab" aria-pressed="false" data-method="existing" id="tab-existing">Existing Ring</button>
+            <button class="tab" role="tab" aria-pressed="false" data-method="diameter" id="tab-diameter">Diameter</button>
+          </div>
+
+          <div id="panel-string" class="panel" aria-hidden="false" role="tabpanel" aria-labelledby="tab-string">
+            <div class="note" id="string-note">Wrap a non-stretchy string or paper snugly around the base of your finger and mark where ends meet. Measure in millimetres (mm).</div>
+            <div style="margin-top:12px;">
+              <label for="string-length">String length — circumference (mm)</label>
+              <input type="number" id="string-length" inputmode="decimal" aria-describedby="string-note" min="30" max="80" placeholder="e.g., 54.3">
+            </div>
+          </div>
+
+          <div id="panel-existing" class="panel" aria-hidden="true" role="tabpanel" aria-labelledby="tab-existing">
+            <div class="note">If you have a ring that fits, choose the UK size from the list. This will populate diameter and circumference details.</div>
+            <div style="margin-top:12px;">
+              <label for="existing-size">Select UK ring size</label>
+              <select id="existing-size" aria-label="Existing ring UK size">
+                <option value="">— pick size —</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="panel-diameter" class="panel" aria-hidden="true" role="tabpanel" aria-labelledby="tab-diameter">
+            <div class="note">Place your ring on a flat surface and measure its inner diameter (mm). Or adjust the interactive circle below to match.</div>
+            <div style="margin-top:12px;">
+              <label for="ring-diameter">Inner diameter (mm)</label>
+              <input type="number" id="ring-diameter" inputmode="decimal" min="10" max="28" placeholder="e.g., 17.2">
+            </div>
+
+            <div class="diameter-wrap" aria-hidden="false">
+              <div id="diameter-circle" aria-hidden="true">17.3 mm</div>
+              <input id="diameter-slider" type="range" min="10" max="28" step="0.1" value="17.3" aria-label="Adjust diameter visually">
+              <div class="print-note">Tip: Use the slider to visually match the inside of a ring on your screen. For accuracy, use a printed template.</div>
+            </div>
+          </div>
+
+          <div class="note" style="margin-top:14px;">
+            <strong>Print-friendly:</strong> <a href="/images/printable-ring-size-chart.pdf" target="_blank" rel="noopener">Download printable chart (PDF)</a> — includes a 1 cm calibration box.
+          </div>
+
+          <div class="links">
+            <a href="/how-to-know-your-ring-size-without-measuring.html">How to measure without tools</a> •
+            <a href="/ring-size-guide.html">Full ring size guide</a>
+          </div>
+        </div>
+
+        <aside>
+          <div class="result" aria-live="polite" aria-atomic="true">
+            <h2>Result</h2>
+            <div>
+              <div class="size-big" id="uk-size">—</div>
+              <div><small id="size-advice" style="color:var(--muted)">Enter a measurement to see your UK size</small></div>
+
+              <div class="detail-grid" style="margin-top:12px;">
+                <div class="detail">
+                  <div style="font-size:13px;color:var(--muted)">Circumference</div>
+                  <div id="circumference" style="font-weight:700;margin-top:6px">— mm</div>
+                </div>
+                <div class="detail">
+                  <div style="font-size:13px;color:var(--muted)">Diameter</div>
+                  <div id="diameter" style="font-weight:700;margin-top:6px">— mm</div>
+                </div>
+                <div class="detail">
+                  <div style="font-size:13px;color:var(--muted)">Closest (±)</div>
+                  <div id="closest-diff" style="font-weight:700;margin-top:6px">—</div>
+                </div>
+              </div>
+
+              <div class="controls" role="group" aria-label="Result controls">
+                <button class="btn" id="copy-btn" aria-label="Copy UK size to clipboard">Copy Size</button>
+                <button class="ghost" id="print-btn" aria-label="Print results">Print</button>
+                <button class="ghost" id="reset-btn" aria-label="Reset inputs">Reset</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="note" style="margin-top:12px;">
+            <strong>Why we give a range:</strong> Fingers change with temperature and time of day. If results fall between two sizes we'll suggest the larger for comfort.
+          </div>
+
+        </aside>
+      </div>
+
+      <div class="footer">
+        <small>Tool by RingSizeFind — for guidance only. For precise fitting, visit a professional jeweler. <a href="/contact.html">Contact us</a></small>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* UK sizes mapping (circumference mm, diameter mm) */
+const UK_SIZES = [
+  { label: 'A', circ: 37.7, dia: 12.0 },
+  { label: 'B', circ: 39.0, dia: 12.4 },
+  { label: 'C', circ: 40.4, dia: 12.9 },
+  { label: 'D', circ: 41.7, dia: 13.3 },
+  { label: 'E', circ: 43.0, dia: 13.7 },
+  { label: 'F', circ: 44.2, dia: 14.1 },
+  { label: 'G', circ: 45.5, dia: 14.5 },
+  { label: 'H', circ: 46.8, dia: 14.9 },
+  { label: 'I', circ: 48.0, dia: 15.3 },
+  { label: 'J', circ: 49.3, dia: 15.7 },
+  { label: 'K', circ: 50.0, dia: 15.9 },
+  { label: 'L', circ: 51.2, dia: 16.3 },
+  { label: 'M', circ: 52.5, dia: 16.7 },
+  { label: 'N', circ: 53.8, dia: 17.1 },
+  { label: 'O', circ: 55.1, dia: 17.5 },
+  { label: 'P', circ: 56.3, dia: 17.9 },
+  { label: 'Q', circ: 57.6, dia: 18.3 },
+  { label: 'R', circ: 59.5, dia: 18.9 },
+  { label: 'S', circ: 60.2, dia: 19.1 },
+  { label: 'T', circ: 61.4, dia: 19.5 },
+  { label: 'U', circ: 62.8, dia: 20.0 },
+  { label: 'V', circ: 63.6, dia: 20.3 },
+  { label: 'W', circ: 64.9, dia: 20.7 },
+  { label: 'X', circ: 66.2, dia: 21.1 },
+  { label: 'Y', circ: 67.5, dia: 21.5 },
+  { label: 'Z', circ: 68.7, dia: 21.9 },
+  { label: 'Z+', circ: 70.0, dia: 22.3 }
+];
+
+/* Populate existing-size select */
+const existingSelect = document.getElementById('existing-size');
+UK_SIZES.forEach(s=>{
+  const opt = document.createElement('option');
+  opt.value = s.label;
+  opt.textContent = s.label + ' — ' + s.dia.toFixed(1) + ' mm';
+  existingSelect.appendChild(opt);
+});
+
+/* Elements */
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+const stringInput = document.getElementById('string-length');
+const diameterInput = document.getElementById('ring-diameter');
+const slider = document.getElementById('diameter-slider');
+const diameterCircle = document.getElementById('diameter-circle');
+
+const ukSizeEl = document.getElementById('uk-size');
+const circEl = document.getElementById('circumference');
+const diaEl = document.getElementById('diameter');
+const closestEl = document.getElementById('closest-diff');
+const adviceEl = document.getElementById('size-advice');
+
+const copyBtn = document.getElementById('copy-btn');
+const printBtn = document.getElementById('print-btn');
+const resetBtn = document.getElementById('reset-btn');
+
+/* Accessibility: Tab switching */
+tabs.forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    tabs.forEach(t=>t.setAttribute('aria-pressed','false'));
+    panels.forEach(p=>p.setAttribute('aria-hidden','true'));
+    tab.setAttribute('aria-pressed','true');
+    document.getElementById('panel-' + tab.dataset.method).setAttribute('aria-hidden','false');
+    // reset hint
+    adviceEl.textContent = 'Enter a measurement to see your UK size';
+  });
+});
+
+/* Utility: find nearest size by circumference or diameter */
+function findNearestBy(key, value) {
+  let nearest = null;
+  let minDiff = Infinity;
+  for (const s of UK_SIZES) {
+    const diff = Math.abs(s[key] - value);
+    if (diff < minDiff) { minDiff = diff; nearest = {size:s, diff}; }
+  }
+  return nearest;
+}
+
+/* If measurement falls between two sizes, suggest larger for comfort */
+function betweenSizesBy(key, value){
+  let lower = null, upper = null;
+  for (let i=0;i<UK_SIZES.length;i++){
+    if (UK_SIZES[i][key] >= value) { upper = UK_SIZES[i]; lower = UK_SIZES[Math.max(0,i-1)]; break; }
+  }
+  if (!upper) { lower = UK_SIZES[UK_SIZES.length-1]; upper = null; }
+  return {lower,upper};
+}
+
+/* Update UI with given circumference (mm) */
+function updateFromCirc(circ){
+  if (!circ) { reset(); return; }
+  const nearest = findNearestBy('circ', circ);
+  const lowerUpper = betweenSizesBy('circ', circ);
+  const lower = lowerUpper.lower;
+  const upper = lowerUpper.upper;
+  const dia = circ / Math.PI;
+  ukSizeEl.textContent = nearest.size.label;
+  circEl.textContent = circ.toFixed(1) + ' mm';
+  diaEl.textContent = dia.toFixed(1) + ' mm';
+  closestEl.textContent = nearest.diff.toFixed(1) + ' mm';
+  if (upper && lower && upper.label !== lower.label) {
+    const mid = (lower.circ + upper.circ)/2;
+    if (Math.abs(circ - mid) < (upper.circ - lower.circ)/2) {
+      adviceEl.textContent = `Measurement is between ${lower.label} and ${upper.label}. Consider choosing ${upper.label} for comfort.`;
+    } else {
+      adviceEl.textContent = `Closest match: ${nearest.size.label}.`;
+    }
+  } else {
+    adviceEl.textContent = `Closest match: ${nearest.size.label}.`;
+  }
+}
+
+/* Update UI with given diameter (mm) */
+function updateFromDia(dia){
+  if (!dia) { reset(); return; }
+  const nearest = findNearestBy('dia', dia);
+  const lowerUpper = betweenSizesBy('dia', dia);
+  const lower = lowerUpper.lower;
+  const upper = lowerUpper.upper;
+  const circ = dia * Math.PI;
+  ukSizeEl.textContent = nearest.size.label;
+  circEl.textContent = circ.toFixed(1) + ' mm';
+  diaEl.textContent = dia.toFixed(1) + ' mm';
+  closestEl.textContent = Math.abs(nearest.size.dia - dia).toFixed(1) + ' mm';
+  if (upper && lower && upper.label !== lower.label) {
+    const mid = (lower.dia + upper.dia)/2;
+    if (Math.abs(dia - mid) < (upper.dia - lower.dia)/2) {
+      adviceEl.textContent = `Measurement is between ${lower.label} and ${upper.label}. Consider choosing ${upper.label} for comfort.`;
+    } else {
+      adviceEl.textContent = `Closest match: ${nearest.size.label}.`;
+    }
+  } else {
+    adviceEl.textContent = `Closest match: ${nearest.size.label}.`;
+  }
+}
+
+/* Reset */
+function reset(){
+  ukSizeEl.textContent = '—';
+  circEl.textContent = '— mm';
+  diaEl.textContent = '— mm';
+  closestEl.textContent = '—';
+  adviceEl.textContent = 'Enter a measurement to see your UK size';
+  diameterCircle.textContent = '— mm';
+}
+
+/* Event listeners */
+stringInput.addEventListener('input', (e)=>{
+  const val = parseFloat(e.target.value);
+  if (isNaN(val)) { reset(); return; }
+  updateFromCirc(val);
+});
+
+existingSelect.addEventListener('change', (e)=>{
+  const v = e.target.value;
+  if (!v) { reset(); return; }
+  const s = UK_SIZES.find(x=>x.label===v);
+  if (s) {
+    ukSizeEl.textContent = s.label;
+    circEl.textContent = s.circ.toFixed(1)+' mm';
+    diaEl.textContent = s.dia.toFixed(1)+' mm';
+    closestEl.textContent = '0.0';
+    adviceEl.textContent = 'Selected exact UK size.';
+    diameterCircle.textContent = s.dia.toFixed(1) + ' mm';
+    slider.value = s.dia;
+    diameterInput.value = s.dia;
+  }
+});
+
+diameterInput.addEventListener('input', (e)=>{
+  const val = parseFloat(e.target.value);
+  if (isNaN(val)) { reset(); return; }
+  slider.value = val;
+  // show circle visually scaled by px (approx)
+  diameterCircle.style.width = (val*4) + 'px';
+  diameterCircle.style.height = (val*4) + 'px';
+  diameterCircle.textContent = val.toFixed(1) + ' mm';
+  updateFromDia(val);
+});
+
+slider.addEventListener('input', (e)=>{
+  const val = parseFloat(e.target.value);
+  diameterInput.value = val.toFixed(1);
+  diameterCircle.style.width = (val*4) + 'px';
+  diameterCircle.style.height = (val*4) + 'px';
+  diameterCircle.textContent = val.toFixed(1) + ' mm';
+  updateFromDia(val);
+});
+
+/* Copy to clipboard */
+copyBtn.addEventListener('click', async()=>{
+  const text = ukSizeEl.textContent === '—' ? '' : `${ukSizeEl.textContent} (UK) — ${circEl.textContent}, ${diaEl.textContent}`;
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    copyBtn.textContent = 'Copied!';
+    setTimeout(()=>copyBtn.textContent='Copy Size',1500);
+  } catch(e){
+    alert('Copy failed. Your browser may block clipboard access.');
+  }
+});
+
+/* Print results */
+printBtn.addEventListener('click', ()=>{
+  window.print();
+});
+
+/* Reset */
+resetBtn.addEventListener('click', ()=>{
+  stringInput.value = '';
+  diameterInput.value = '';
+  slider.value = 17.3;
+  existingSelect.value = '';
+  reset();
+});
+
+/* initialize */
+reset();
+</script>
+</body>
+</html>

@@ -1,191 +1,106 @@
-// Ring size conversion table
-const ringSizeChart = [
-    { us: '3', uk: 'F', eu: 44, circumference: 44.2, diameter: 14.1 },
-    { us: '3.5', uk: 'G', eu: 45, circumference: 45.5, diameter: 14.5 },
-    { us: '4', uk: 'H', eu: 46, circumference: 46.8, diameter: 14.9 },
-    { us: '4.5', uk: 'I', eu: 47, circumference: 48.0, diameter: 15.3 },
-    { us: '5', uk: 'J', eu: 49, circumference: 49.3, diameter: 15.7 },
-    { us: '5.5', uk: 'K', eu: 50, circumference: 50.6, diameter: 16.1 },
-    { us: '6', uk: 'L', eu: 51, circumference: 51.9, diameter: 16.5 },
-    { us: '6.5', uk: 'M', eu: 52, circumference: 53.1, diameter: 16.9 },
-    { us: '7', uk: 'N', eu: 54, circumference: 54.4, diameter: 17.3 },
-    { us: '7.5', uk: 'O', eu: 55, circumference: 55.7, diameter: 17.7 },
-    { us: '8', uk: 'P', eu: 56, circumference: 57.0, diameter: 18.1 },
-    { us: '8.5', uk: 'Q', eu: 57, circumference: 58.3, diameter: 18.5 },
-    { us: '9', uk: 'R', eu: 59, circumference: 59.5, diameter: 18.9 },
-    { us: '9.5', uk: 'S', eu: 60, circumference: 60.8, diameter: 19.4 },
-    { us: '10', uk: 'T', eu: 61, circumference: 62.1, diameter: 19.8 },
-    { us: '10.5', uk: 'U', eu: 62, circumference: 63.4, diameter: 20.2 },
-    { us: '11', uk: 'V', eu: 64, circumference: 64.6, diameter: 20.6 },
-    { us: '11.5', uk: 'W', eu: 65, circumference: 65.9, diameter: 21.0 },
-    { us: '12', uk: 'X', eu: 66, circumference: 67.2, diameter: 21.4 },
-    { us: '12.5', uk: 'Y', eu: 67, circumference: 68.5, diameter: 21.8 },
-    { us: '13', uk: 'Z', eu: 68, circumference: 69.7, diameter: 22.2 },
-    { us: '13.5', uk: 'Z+1', eu: 69, circumference: 71.0, diameter: 22.6 },
-    { us: '14', uk: 'Z+2', eu: 70, circumference: 72.3, diameter: 23.0 },
-    { us: '14.5', uk: 'Z+3', eu: 71, circumference: 73.5, diameter: 23.4 },
-    { us: '15', uk: 'Z+4', eu: 72, circumference: 74.8, diameter: 23.8 },
-    { us: '15.5', uk: 'Z+5', eu: 73, circumference: 76.1, diameter: 24.2 },
-    { us: '16', uk: 'Z+6', eu: 74, circumference: 77.4, diameter: 24.6 }
+const RING_SIZES = [
+  { us:"3", uk:"F", eu:"44", diameter:14.1, circumference:44.2 },
+  { us:"3.5", uk:"G", eu:"45", diameter:14.5, circumference:45.5 },
+  { us:"4", uk:"H", eu:"46", diameter:14.9, circumference:46.8 },
+  { us:"4.5", uk:"I", eu:"48", diameter:15.3, circumference:48.0 },
+  { us:"5", uk:"J", eu:"49", diameter:15.7, circumference:49.3 },
+  { us:"5.5", uk:"K", eu:"50", diameter:16.1, circumference:50.6 },
+  { us:"6", uk:"L", eu:"52", diameter:16.5, circumference:51.9 },
+  { us:"6.5", uk:"M", eu:"53", diameter:16.9, circumference:53.1 },
+  { us:"7", uk:"N", eu:"54", diameter:17.3, circumference:54.4 },
+  { us:"7.5", uk:"O", eu:"56", diameter:17.7, circumference:55.7 },
+  { us:"8", uk:"P", eu:"57", diameter:18.1, circumference:57.0 },
+  { us:"8.5", uk:"Q", eu:"58", diameter:18.5, circumference:58.3 },
+  { us:"9", uk:"R", eu:"60", diameter:18.9, circumference:59.5 },
+  { us:"9.5", uk:"S", eu:"61", diameter:19.3, circumference:60.8 },
+  { us:"10", uk:"T", eu:"62", diameter:19.8, circumference:62.1 },
+  { us:"10.5", uk:"U", eu:"64", diameter:20.2, circumference:63.4 },
+  { us:"11", uk:"V", eu:"65", diameter:20.6, circumference:64.6 },
+  { us:"11.5", uk:"W", eu:"66", diameter:21.0, circumference:65.9 },
+  { us:"12", uk:"X", eu:"68", diameter:21.4, circumference:67.2 }
 ];
 
-// Utility functions
-function convertCircumferenceToMm(value, unit) {
-    switch (unit) {
-        case 'mm': return value;
-        case 'cm': return value * 10;
-        case 'in': return value * 25.4;
-        default: return value;
-    }
-}
-
-function convertDiameterToMm(value, unit) {
-    switch (unit) {
-        case 'mm': return value;
-        case 'cm': return value * 10;
-        case 'in': return value * 25.4;
-        default: return value;
-    }
-}
-
-function findRingSizeByCircumference(circumferenceMm) {
-    let closestSize = ringSizeChart[0];
-    let minDiff = Math.abs(ringSizeChart[0].circumference - circumferenceMm);
-
-    for (const size of ringSizeChart) {
-        const diff = Math.abs(size.circumference - circumferenceMm);
-        if (diff < minDiff) {
-            minDiff = diff;
-            closestSize = size;
-        }
-    }
-
-    return minDiff <= 3 ? closestSize : null;
-}
-
-function findRingSizeByDiameter(diameterMm) {
-    let closestSize = ringSizeChart[0];
-    let minDiff = Math.abs(ringSizeChart[0].diameter - diameterMm);
-
-    for (const size of ringSizeChart) {
-        const diff = Math.abs(size.diameter - diameterMm);
-        if (diff < minDiff) {
-            minDiff = diff;
-            closestSize = size;
-        }
-    }
-
-    return minDiff <= 1.5 ? closestSize : null;
-}
-
-function displayResult(result) {
-    const resultDisplay = document.getElementById('result-display');
-    
-    if (!result) {
-        resultDisplay.classList.add('hidden');
-        return;
-    }
-
-    document.getElementById('us-size').textContent = result.us;
-    document.getElementById('uk-size').textContent = result.uk;
-    document.getElementById('eu-size').textContent = result.eu;
-    document.getElementById('result-circumference').textContent = result.circumference.toFixed(1);
-    document.getElementById('result-diameter').textContent = result.diameter.toFixed(1);
-    
-    resultDisplay.classList.remove('hidden');
-}
-
-// Method selection
-let selectedMethod = null;
-
-document.querySelectorAll('.method-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const method = this.dataset.method;
-        
-        // Remove active class from all cards
-        document.querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
-        
-        // Add active class to clicked card
-        this.classList.add('active');
-        
-        // Hide all method components
-        document.querySelectorAll('.method-component').forEach(component => {
-            component.classList.add('hidden');
-        });
-        
-        // Show selected method component
-        document.getElementById(method + '-method').classList.remove('hidden');
-        
-        selectedMethod = method;
-        
-        // Clear previous results
-        displayResult(null);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  initializeTabs();
+  initializeMeasurement();
+  initializeConversion();
+  initializeSizeChart();
+  updateMeasurement();
 });
 
-// String Method
-const circumferenceInput = document.getElementById('circumference');
-const circumferenceUnit = document.getElementById('circumference-unit');
-
-function handleStringMethod() {
-    const value = parseFloat(circumferenceInput.value);
-    const unit = circumferenceUnit.value;
-    
-    if (value && !isNaN(value)) {
-        const circumferenceMm = convertCircumferenceToMm(value, unit);
-        const result = findRingSizeByCircumference(circumferenceMm);
-        displayResult(result);
-    } else {
-        displayResult(null);
-    }
+function initializeTabs() {
+  const tabs = document.querySelectorAll(".nav-tab");
+  const contents = document.querySelectorAll(".tab-content");
+  tabs.forEach(tab => tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  }));
 }
 
-circumferenceInput.addEventListener('input', handleStringMethod);
-circumferenceUnit.addEventListener('change', handleStringMethod);
-
-// Existing Ring Method
-const diameterInput = document.getElementById('diameter');
-const diameterUnit = document.getElementById('diameter-unit');
-
-function handleExistingRingMethod() {
-    const value = parseFloat(diameterInput.value);
-    const unit = diameterUnit.value;
-    
-    if (value && !isNaN(value)) {
-        const diameterMm = convertDiameterToMm(value, unit);
-        const result = findRingSizeByDiameter(diameterMm);
-        displayResult(result);
-    } else {
-        displayResult(null);
-    }
+function initializeMeasurement() {
+  const slider = document.getElementById("diameterSlider");
+  slider.addEventListener("input", updateMeasurement);
 }
 
-diameterInput.addEventListener('input', handleExistingRingMethod);
-diameterUnit.addEventListener('change', handleExistingRingMethod);
+function updateMeasurement() {
+  const slider = document.getElementById("diameterSlider");
+  const diameter = parseFloat(slider.value);
+  const circumference = Math.PI * diameter;
+  document.getElementById("diameterValue").textContent = `${diameter.toFixed(1)} mm`;
+  document.getElementById("ringInfoValue").textContent = `${circumference.toFixed(1)} mm`;
 
-// Diameter Slider Method
-const diameterSlider = document.getElementById('diameter-slider');
-const diameterValue = document.getElementById('diameter-value');
-const ringCircle = document.getElementById('ring-circle');
+  const visualRing = document.getElementById("visualRing");
+  const size = Math.min(diameter * 4, 300);
+  visualRing.style.width = `${size}px`;
+  visualRing.style.height = `${size}px`;
 
-function handleSliderMethod() {
-    const diameter = parseFloat(diameterSlider.value);
-    diameterValue.textContent = diameter.toFixed(1);
-    
-    // Update ring circle size with better scaling and constraints
-    const circleSize = Math.max(28, Math.min(120, diameter * 3.5));
-    ringCircle.style.width = circleSize + 'px';
-    ringCircle.style.height = circleSize + 'px';
-    
-    // Update slider background
-    const percentage = ((diameter - 14) / (25 - 14)) * 100;
-    diameterSlider.style.background = `linear-gradient(to right, #8b5cf6 0%, #8b5cf6 ${percentage}%, #e0e7ff ${percentage}%, #e0e7ff 100%)`;
-    
-    const result = findRingSizeByDiameter(diameter);
-    displayResult(result);
+  const closest = RING_SIZES.reduce((a, b) =>
+    Math.abs(b.diameter - diameter) < Math.abs(a.diameter - diameter) ? b : a
+  );
+  document.getElementById("usSize").textContent = closest.us;
+  document.getElementById("ukSize").textContent = closest.uk;
+  document.getElementById("euSize").textContent = closest.eu;
 }
 
-diameterSlider.addEventListener('input', handleSliderMethod);
+function initializeConversion() {
+  const standard = document.getElementById("sizeStandard");
+  const value = document.getElementById("sizeValue");
+  standard.addEventListener("change", () => populateSizeOptions());
+  value.addEventListener("change", updateConversion);
+  populateSizeOptions();
+}
 
-// Initialize slider
-handleSliderMethod();
+function populateSizeOptions() {
+  const standard = document.getElementById("sizeStandard").value;
+  const select = document.getElementById("sizeValue");
+  select.innerHTML = "";
+  RING_SIZES.forEach(size => {
+    const opt = document.createElement("option");
+    opt.value = size[standard];
+    opt.textContent = size[standard];
+    select.appendChild(opt);
+  });
+}
+
+function updateConversion() {
+  const std = document.getElementById("sizeStandard").value;
+  const val = document.getElementById("sizeValue").value;
+  const size = RING_SIZES.find(s => s[std] === val);
+  if (!size) return;
+  document.getElementById("convertedUS").textContent = size.us;
+  document.getElementById("convertedUK").textContent = size.uk;
+  document.getElementById("convertedEU").textContent = size.eu;
+  document.getElementById("convertedDiameter").textContent = `${size.diameter} mm`;
+  document.getElementById("convertedCircumference").textContent = `${size.circumference} mm`;
+}
+
+function initializeSizeChart() {
+  const body = document.getElementById("sizeTableBody");
+  RING_SIZES.forEach(s => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${s.us}</td><td>${s.uk}</td><td>${s.eu}</td><td>${s.diameter}</td><td>${s.circumference}</td>`;
+    body.appendChild(row);
+  });
+}
