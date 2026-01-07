@@ -196,27 +196,3 @@ body {
   font-size: 12px;
   color: #777;
 }
-
-.faq-item {
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .faq-question {
-            font-weight: bold;
-            cursor: pointer;
-            padding: 10px 0;
-        }
-        .faq-answer {
-            display: none;
-            padding-bottom: 10px;
-        }
-        .faq-question::before {
-            content: "▶ ";
-            font-size: 0.8em;
-        }
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-        .faq-item.active .faq-question::before {
-            content: "▼ ";
-        }
