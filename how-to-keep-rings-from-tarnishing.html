@@ -185,7 +185,24 @@
     </a>
   
   </header>
-
+<nav class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div class="hamburger">Menu</div>
+        </div>
+    <ul class="menu">
+        <li><a href="https://ringsizefind.com/">Home</a></li>
+        <li><a href="https://ringsizefind.com/blog.html">Blog</a></li>
+        <li><a href="https://ringsizefind.com/about.html">About</a></li>
+        <li><a href="https://ringsizefind.com/faq.html">FAQ</a></li>
+        <li><a href="https://ringsizefind.com/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+        function toggleMenu() {
+          const menu = document.querySelector('.menu');
+          menu.classList.toggle('active');
+        }
+      </script>
   <main>
 <h1>How to Keep Rings From Tarnishing: Easy Tips That Really Work</h1>
 <div style="display: flex; justify-content: center; padding: 10px; margin-top: 10px; margin-bottom: 10px;">
