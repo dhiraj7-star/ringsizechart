@@ -133,7 +133,24 @@
     </a>
   
   </header>
-
+<nav class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div class="hamburger">Menu</div>
+        </div>
+    <ul class="menu">
+        <li><a href="https://ringsizefind.com/">Home</a></li>
+        <li><a href="https://ringsizefind.com/blog.html">Blog</a></li>
+        <li><a href="https://ringsizefind.com/about.html">About</a></li>
+        <li><a href="https://ringsizefind.com/faq.html">FAQ</a></li>
+        <li><a href="https://ringsizefind.com/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+        function toggleMenu() {
+          const menu = document.querySelector('.menu');
+          menu.classList.toggle('active');
+        }
+      </script>
   <main>
     <h1>Ring Size Finder — Find Your Perfect Ring Size</h1>
       <p>Welcome to <strong>RingSizeFind</strong> — your friendly helper for accurate ring sizing. Whether you’re buying an engagement ring, a wedding band, or a simple everyday piece, we make measuring easy, reliable, and stress-free.</p>
