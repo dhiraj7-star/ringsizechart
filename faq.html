@@ -28,7 +28,24 @@
     </a>
   
   </header>
-
+<nav class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div class="hamburger">Menu</div>
+        </div>
+    <ul class="menu">
+        <li><a href="https://ringsizefind.com/">Home</a></li>
+        <li><a href="https://ringsizefind.com/blog.html">Blog</a></li>
+        <li><a href="https://ringsizefind.com/about.html">About</a></li>
+        
+        <li><a href="https://ringsizefind.com/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+        function toggleMenu() {
+          const menu = document.querySelector('.menu');
+          menu.classList.toggle('active');
+        }
+      </script>
   <main>
 <h1>Frequently Asked Questions (FAQ)</h1>
     <p>Your quick guide to everything about ring sizing, measuring, and charts.</p>
