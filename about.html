@@ -52,7 +52,24 @@
     </a>
   
   </header>
-
+<nav class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div class="hamburger">Menu</div>
+        </div>
+    <ul class="menu">
+        <li><a href="https://ringsizefind.com/">Home</a></li>
+        <li><a href="https://ringsizefind.com/blog.html">Blog</a></li>
+        
+        <li><a href="https://ringsizefind.com/faq.html">FAQ</a></li>
+        <li><a href="https://ringsizefind.com/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+        function toggleMenu() {
+          const menu = document.querySelector('.menu');
+          menu.classList.toggle('active');
+        }
+      </script>
   <main>
 <h1>About RingSizeFind</h1>
     <p><strong>RingSizeFind</strong> was created to make ring sizing simple, accurate, and stress-free for everyone. Whether you’re shopping for an engagement ring, wedding band, or fashion jewelry, we help you find the perfect fit from the comfort of your home.</p>
