@@ -188,11 +188,11 @@ body {
   text-align: center;
 }
 
-.blog {
+.guide {
     margin: 80px auto;
 }
 
-.blog-list {
+.guide-list {
           list-style: none;
           padding: 0;
           display: flex;
@@ -201,12 +201,12 @@ body {
           gap: 20px;
         }
       
-        .blog-list li {
+        .guide-list li {
           width: 100%;
           max-width: 280px;
         }
       
-        .blog-list a {
+        .guide-list a {
           display: block;
           text-decoration: none;
           padding: 12px 18px;
@@ -217,7 +217,7 @@ body {
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
       
-        .blog-list a:hover {
+        .guide-list a:hover {
           transform: translateY(-2px);
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }    
