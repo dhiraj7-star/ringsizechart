@@ -190,7 +190,50 @@
       </div>
     </div>
   </div>
+<div class="tab-content" id="chart">
+    <div class="card">
+      <h2>Ring Size Chart</h2>
+      <div class="table-container">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>US</th><th>UK</th><th>EU</th><th>Diameter (mm)</th><th>Circumference (mm)</th>
+            </tr>
+          </thead>
+          <tbody id="sizeTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="tab-content" id="convert">
+    <div class="card">
+      <h2>Convert Ring Sizes</h2>
+      <div class="convert-grid">
+        <div>
+          <label class="label">Select Size Standard</label>
+          <select id="sizeStandard" class="select">
+            <option value="us">US</option>
+            <option value="uk">UK</option>
+            <option value="eu">EU</option>
+          </select>
 
+          <label class="label">Enter Ring Size</label>
+          <select id="sizeValue" class="select"></select>
+        </div>
+        <div id="convertResults">
+          <h3>Converted Sizes:</h3>
+          <div class="conversion-list">
+            <div class="conversion-item"><span>US:</span><span id="convertedUS">7</span></div>
+            <div class="conversion-item"><span>UK:</span><span id="convertedUK">N</span></div>
+            <div class="conversion-item"><span>EU:</span><span id="convertedEU">54</span></div>
+            <div class="conversion-item"><span>Diameter:</span><span id="convertedDiameter">17.3 mm</span></div>
+            <div class="conversion-item"><span>Circumference:</span><span id="convertedCircumference">54.4 mm</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <aside class="tool-disclaimer" aria-label="Technical Specification">
     <p><strong>Technical Note:</strong> This interactive calculator converts physical millimeters to regional standards based on the <strong>ISO 8653</strong> jewelry manufacturing specifications.</p>
 </aside>
@@ -249,51 +292,9 @@
   <p>In contrast, the <strong>United Kingdom, Australia, and New Zealand</strong> deploy an alphabetical scale ranging from A to Z, utilizing half-size steps. The <strong>European Union standard</strong> simplifies this process by setting the ring size equal to the exact inner circumference in millimeters. Therefore, a ring with a 54-millimeter circumference translates directly to an EU Size 54, which corresponds closely to a US Size 7.</p>
 </section>
 
-  <div class="tab-content" id="convert">
-    <div class="card">
-      <h2>Convert Ring Sizes</h2>
-      <div class="convert-grid">
-        <div>
-          <label class="label">Select Size Standard</label>
-          <select id="sizeStandard" class="select">
-            <option value="us">US</option>
-            <option value="uk">UK</option>
-            <option value="eu">EU</option>
-          </select>
+  
 
-          <label class="label">Enter Ring Size</label>
-          <select id="sizeValue" class="select"></select>
-        </div>
-        <div id="convertResults">
-          <h3>Converted Sizes:</h3>
-          <div class="conversion-list">
-            <div class="conversion-item"><span>US:</span><span id="convertedUS">7</span></div>
-            <div class="conversion-item"><span>UK:</span><span id="convertedUK">N</span></div>
-            <div class="conversion-item"><span>EU:</span><span id="convertedEU">54</span></div>
-            <div class="conversion-item"><span>Diameter:</span><span id="convertedDiameter">17.3 mm</span></div>
-            <div class="conversion-item"><span>Circumference:</span><span id="convertedCircumference">54.4 mm</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-content" id="chart">
-    <div class="card">
-      <h2>Ring Size Chart</h2>
-      <div class="table-container">
-        <table class="size-table">
-          <thead>
-            <tr>
-              <th>US</th><th>UK</th><th>EU</th><th>Diameter (mm)</th><th>Circumference (mm)</th>
-            </tr>
-          </thead>
-          <tbody id="sizeTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+  
       
       <img class="feature" src="https://ringsizefind.com/images/measure-ring-size-guide.jpg" alt="Hands measuring ring size with printable chart and ruler">
   
