@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><a href="https://ringsizefind.com/contact.html">Contact</a></li>
     </ul>
     </nav>
-  <div  class="article">
+  <main>
     <h1>Terms and Conditions</h1>
         <p>These terms and conditions(“Agreement”) set forth the general terms and conditions of your use of the RingSizeFind, website (“Website” or “Service”) and any of its related products and services (collectively, “Services”). This Agreement is legally binding between you (“User”, “you” or “your”) and this Website operator (“Operator”, “we”, “us” or “our”). If you are entering into this agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this agreement, in which case the terms “User”, “you” or “your” shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this agreement, you must not accept this agreement and may not access and use the Website and Services. By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Website and Services.</p>
     
@@ -125,24 +125,36 @@ document.addEventListener("DOMContentLoaded", function () {
     
     <p>If you have any questions, concerns, or complaints regarding this Agreement, we encourage you to contact us using our <a href="https://ringsizefind.com/contact.html">page</a>.</p>
     
-    <ul class="link-list">
-    <li><a href="https://ringsizefind.com/privacy-policy.html">Privacy Policy</a></li>
-    <li><a href="https://ringsizefind.com/disclaimer.html">Disclaimer</a></li>
-    </ul>
-</div>
+    
+</main>
   <footer>
-    <p id="copyright"></p>
-</footer>
-    <script>
-        function toggleMenu() {
-    const menu = document.querySelector('.menu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-      </script>
-
-  
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <a href="https://ringsizefind.com/guides.html">Guides</a>
+        <a href="https://ringsizefind.com/about.html">About</a>
+        <a href="https://ringsizefind.com/contact.html">Contact</a>
+        <a href="https://ringsizefind.com/faq.html">FAQ</a>
+      </div>
+      <div class="footer-column">
+        <h4>Important Pages</h4>
+        <a href="https://ringsizefind.com/privacy-policy.html">Privacy Policy</a>
+        <a href="https://ringsizefind.com/disclaimer.html">Disclaimer</a>
+        <a href="https://ringsizefind.com/terms-and-conditions.html">Terms and Conditions</a>
+      </div>
+    </div>
+    <div class="footer-text">
+       <p id="copyright"></p>
+      </div> 
+  </footer>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  let copyrightElement = document.getElementById("copyright");
+  if (copyrightElement) {
+    copyrightElement.textContent = `© ${new Date().getFullYear()} RingSizeFind.com`;
+  }
+});
+</script>
 </body>
 </html>
 
