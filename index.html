@@ -350,7 +350,145 @@
     h1{ font-size:1.18rem; }
     .stat .v{ font-size:1.15rem; }
   }
-</style>
+.home-article{
+    max-width:720px;
+    margin:48px auto 0;
+    padding:0 2px;
+    color:var(--ink, #221f1c);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size:17px;
+    line-height:1.75;
+  }
+
+  .home-article h2,
+  .home-article h3{
+    font-family:Georgia, "Iowan Old Style", "Times New Roman", serif;
+    letter-spacing:-.02em;
+    text-wrap:balance;
+    color:var(--ink, #221f1c);
+  }
+
+  .home-article h2{
+    font-size:clamp(1.3rem, 4.2vw, 1.6rem);
+    line-height:1.25;
+    margin:44px 0 14px;
+    padding-top:6px;
+  }
+
+  .home-article h3{
+    font-size:1.04rem;
+    line-height:1.35;
+    margin:28px 0 8px;
+  }
+
+  .home-article h2:first-child{ margin-top:0; }
+
+  .home-article p{ margin:0 0 17px; }
+
+  .home-article .article-kicker{
+    display:inline-block;
+    margin:0 0 10px;
+    font-size:.68rem;
+    font-weight:750;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold, #c9a227);
+  }
+
+  .home-article .article-lede{
+    font-size:1.08rem;
+    line-height:1.7;
+    color:var(--ink-soft, #4a443d);
+    margin-bottom:24px;
+  }
+
+  .home-article ul,
+  .home-article ol{
+    margin:0 0 18px;
+    padding-left:1.3em;
+  }
+  .home-article li{ margin-bottom:9px; }
+  .home-article li::marker{ color:var(--gold, #c9a227); font-weight:700; }
+
+  .home-article strong{ font-weight:680; }
+  .home-article em{ font-style:italic; }
+
+  .home-article a{
+    color:#9a7a12;
+    text-decoration-thickness:1.5px;
+    text-underline-offset:2px;
+  }
+
+  .home-article .article-callout{
+    background:#fffdf6;
+    border-left:3px solid var(--gold, #c9a227);
+    border-radius:0 12px 12px 0;
+    padding:16px 20px;
+    margin:24px 0;
+    font-size:.96rem;
+    color:var(--ink-soft, #4a443d);
+  }
+  .home-article .article-callout p:last-child{ margin-bottom:0; }
+
+  .home-article .article-table-wrap{
+    overflow-x:auto;
+    margin:22px 0 26px;
+    border-radius:12px;
+    background:var(--card, #fff);
+    box-shadow:0 1px 2px rgba(34,31,28,.05), 0 10px 28px -22px rgba(34,31,28,.5);
+  }
+
+  .home-article table{
+    width:100%;
+    min-width:380px;
+    border-collapse:collapse;
+    font-size:.86rem;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .home-article caption{
+    caption-side:bottom;
+    text-align:left;
+    font-size:.72rem;
+    color:var(--muted, #8d8479);
+    padding:10px 14px 12px;
+    line-height:1.5;
+  }
+
+  .home-article th{
+    text-align:left;
+    font-size:.64rem;
+    font-weight:750;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted, #8d8479);
+    padding:13px 14px 9px;
+    border-bottom:1.5px solid var(--line, #e8e2d9);
+    white-space:nowrap;
+  }
+
+  .home-article td{
+    padding:10px 14px;
+    border-bottom:1px solid #f1ece3;
+  }
+  .home-article tbody tr:last-child td{ border-bottom:none; }
+  .home-article tbody tr:nth-child(even){ background:#fdfbf7; }
+  .home-article td:first-child{ font-weight:680; }
+
+  .home-article .article-rule{
+    border:none;
+    border-top:1px solid var(--line, #e8e2d9);
+    margin:40px 0;
+  }
+
+  .home-article .faq-item{ margin-bottom:22px; }
+  .home-article .faq-item h3{ margin-top:0; }
+  .home-article .faq-item p:last-child{ margin-bottom:0; }
+
+  @media (max-width:480px){
+    .home-article{ font-size:16.5px; }
+    .home-article .article-callout{ padding:14px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -616,6 +754,380 @@
 
 })();
 </script>
+   
+<article class="home-article">
+
+  <p class="article-kicker">The Complete Guide</p>
+
+  <h2>Ring Sizing, Explained Without the Guesswork</h2>
+
+  
+  <p class="article-lede">
+    A ring that fits is a quiet pleasure you stop noticing after a week. A ring
+    that doesn't fit is a small, constant irritation you notice every time you
+    wash your hands. The distance between those two experiences is often less
+    than half a millimetre — which is why ring sizing, for all its apparent
+    simplicity, trips up so many people. This page is the reasoning behind the
+    tool above, plus everything I wish someone had told me before I bought my
+    first ring.
+  </p>
+
+  <h2>What a ring size actually measures</h2>
+
+  <p>
+    Most size charts skip the one fact that makes everything else make sense:
+    a ring size describes the <strong>hole</strong>, not the ring. Specifically,
+    it's derived from the <strong>inner diameter</strong> — the straight-line
+    distance across the inside of the band.
+  </p>
+
+  <p>
+    When you wrap a strip of paper around your finger, you're measuring
+    circumference instead. The two are related by π, which sounds academic until
+    you run the numbers: a change of just 0.4 mm in diameter works out to roughly
+    1.3 mm in circumference. That's the difference between a ring that slides on
+    easily and one that needs a twist. Small measurements really do matter here.
+  </p>
+
+  <p>
+    Different countries describe the same physical ring in different languages.
+    The United States uses a numbered scale where each full size adds about
+    0.8 mm of inner diameter. The United Kingdom and much of the Commonwealth use
+    letters, from A upward. The European system, as used in Germany and most of
+    the continent, simply states the inner circumference in millimetres. So one
+    finger can be a US 8, a UK P, and an EU 57 at the same time — three labels,
+    one size.
+  </p>
+
+  <div class="article-callout">
+    <p>
+      <strong>Why this matters at checkout.</strong> A jeweller's chart is only
+      as good as the standard it follows. US sizing has half sizes; UK sizing has
+      half letters; France and Italy use their own offset systems that don't map
+      neatly onto either. When you buy from a brand, use that brand's own chart —
+      never a generic one from a different country.
+    </p>
+  </div>
+
+  <h2>Why sizing at home usually goes wrong</h2>
+
+  <p>
+    Printable ring sizers are a genuinely good idea that collapses the moment
+    they meet a real printer. Every one of them carries the same microscopic
+    instruction: <em>print at 100% scale, do not fit to page.</em> Most people
+    never see it. And even those who do are relying on a printer that may
+    interpret "100%" differently from the one the designer used. One machine
+    shaves 4% off to fit its margins; another treats the paper size differently;
+    a third quietly decides it knows better.
+  </p>
+
+  <p>
+    Four percent sounds trivial. On an 18 mm ring, it's 0.72 mm — almost a full
+    size. You end up ordering something that fits beautifully on paper and spins
+    around a finger in real life.
+  </p>
+
+  <p>
+    The second failure is harder to see and impossible to fix with a better
+    printout: <strong>your screen is not a ruler.</strong> A CSS pixel is
+    nominally 1/96th of an inch, but phone manufacturers pack wildly different
+    numbers of physical pixels into that unit. Two phones displaying identical
+    pages can render an "18 mm" circle at sizes that differ by 15% or more.
+  </p>
+
+  <p>
+    The third failure is the oldest one: paper stretches, creases, and adds its
+    own thickness to the circumference. A paper measurement can easily be a full
+    size out. Treat it as a rough sanity check, not an answer.
+  </p>
+
+  <h2>Why the tool asks you to calibrate first</h2>
+
+  <p>
+    Instead of trusting your screen, this tool makes you prove it. You hold a
+    bank card against the glass and drag a slider until the dashed outline
+    matches the card's short edge. That edge is 53.98 mm — fixed by the
+    ISO/IEC 7810 standard that governs every payment card in your wallet. It's
+    a free, reliable ruler that most people already own.
+  </p>
+
+  <p>
+    Once the outline matches, the tool knows your screen's true pixel density.
+    From that point on, every ring it draws is rendered at actual physical size,
+    which means you can set a real ring down on the screen and compare directly.
+    The calibration is saved to your browser, so you only need to do it once per
+    device.
+  </p>
+
+  <p>
+    It's not perfect. A thick tempered-glass protector and a slanted viewing
+    angle can introduce a small parallax error. Hold the phone flat, look
+    straight down, and you'll be close enough that a jeweller's final check
+    becomes a formality rather than a correction.
+  </p>
+
+  <h2>Step by step: finding your size with the tool</h2>
+
+  <ol>
+    <li>
+      <strong>Calibrate.</strong> Open the calibration panel, lay a bank card on
+      the screen, and adjust the slider until the dashed box matches the card's
+      short edge exactly. Take your time — everything downstream depends on it.
+    </li>
+    <li>
+      <strong>Slide to your size.</strong> The circle grows as you move the
+      slider, and the US, UK, and EU readouts update together. You never have to
+      convert in your head at checkout.
+    </li>
+    <li>
+      <strong>Test with a ring you already own.</strong> This is the step people
+      skip and later regret. Drop your best-fitting ring onto the circle. If the
+      circle sits snugly inside the band, you've found your size. If the ring
+      slides loosely around it, go up a step. If it won't fit over the circle,
+      go down.
+    </li>
+    <li>
+      <strong>Note the band width.</strong> If the ring you're buying is wider
+      than about 6 mm, add half a size. More on that below.
+    </li>
+  </ol>
+
+  <h2>Measuring a ring you already own</h2>
+
+  <p>
+    This is the most accurate method available at home, and the one I'd recommend
+    before any other. The only trick is knowing which measurement to take.
+  </p>
+
+  <p>
+    Ring size is defined by the <strong>inner diameter</strong> — the hole, not
+    the outside of the band. Measure across the outside of a chunky ring and
+    you'll get a number several millimetres too large, then order something you
+    can't wear.
+  </p>
+
+  <p>
+    The easiest reliable approach: place the ring flat on the screen, open the
+    calibration panel, and adjust the main slider until the circle matches the
+    <em>inside</em> of the band. You don't need to read a ruler at all — the tool
+    is doing the measurement for you. If you'd rather measure by hand, use a
+    ruler with millimetre markings and measure the widest inner span, from the
+    inside edge on one side to the inside edge on the other.
+  </p>
+
+  <h2>A quick word on conversions</h2>
+
+  <p>
+    The table below covers the sizes most people actually need. It won't replace
+    a jeweller's chart — especially for European countries with their own
+    systems — but it will keep you from ordering the wrong thing in a hurry.
+  </p>
+
+  <div class="article-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">US</th>
+          <th scope="col">UK</th>
+          <th scope="col">EU</th>
+          <th scope="col">Inner ⌀</th>
+          <th scope="col">Circumference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>5</td><td>J</td><td>50</td><td>15.7 mm</td><td>49.3 mm</td></tr>
+        <tr><td>6</td><td>L</td><td>52</td><td>16.5 mm</td><td>51.8 mm</td></tr>
+        <tr><td>7</td><td>N</td><td>54</td><td>17.3 mm</td><td>54.4 mm</td></tr>
+        <tr><td>8</td><td>P</td><td>57</td><td>18.1 mm</td><td>56.9 mm</td></tr>
+        <tr><td>9</td><td>R</td><td>59</td><td>18.9 mm</td><td>59.4 mm</td></tr>
+        <tr><td>10</td><td>T</td><td>62</td><td>19.8 mm</td><td>62.2 mm</td></tr>
+        <tr><td>11</td><td>V</td><td>65</td><td>20.6 mm</td><td>64.7 mm</td></tr>
+        <tr><td>12</td><td>X</td><td>67</td><td>21.4 mm</td><td>67.2 mm</td></tr>
+        <tr><td>13</td><td>Z</td><td>70</td><td>22.2 mm</td><td>69.7 mm</td></tr>
+      </tbody>
+      <caption>
+        EU sizing here follows the inner-circumference convention used in
+        Germany and much of continental Europe. France and Italy use their own
+        offset systems, so always check the brand's chart before ordering.
+      </caption>
+    </table>
+  </div>
+
+  <h2>Six things that quietly change your ring size</h2>
+
+  <h3>1. Your knuckle is not your finger</h3>
+  <p>
+    A ring has to clear the widest point — usually the knuckle — and then sit
+    comfortably on the narrower base. When those two disagree, you're choosing
+    between a ring that slides on easily and spins, or one that takes a wiggle
+    to remove and stays put. Most people land on slightly snug, because a ring
+    that rotates all day is more annoying than one you twist off with effort.
+  </p>
+
+  <h3>2. Fingers swell during the day</h3>
+  <p>
+    Half a size of swelling between morning and evening is completely normal,
+    and it's mostly water. Cold hands can read a full half-size smaller than warm
+    ones. If you measure on a winter morning in a chilly kitchen, you're
+    measuring your smallest finger, not your real one. Aim for mid-day, at room
+    temperature, with hands that haven't just come in from the cold.
+  </p>
+
+  <h3>3. Band width changes the fit</h3>
+  <p>
+    A 2 mm band and a 6 mm band in the same nominal size do not feel the same. A
+    wider band covers more of the finger and creates more friction. The rule of
+    thumb jewellers use: <strong>above about 6 mm of width, go up half a
+    size.</strong> Comfort-fit interiors, which are rounded on the inside, tend
+    to feel roughly half a size looser than a flat interior — useful to know
+    before you order one in your "usual" size and find it spinning.
+  </p>
+
+  <h3>4. Your two hands are not identical</h3>
+  <p>
+    For most right-handed people, the dominant hand runs slightly larger —
+    sometimes half a size, occasionally more. Measure the specific finger on the
+    specific hand. It sounds obvious until you're standing in a shop realising
+    you only ever checked the other one.
+  </p>
+
+  <h3>5. Weight changes reach your fingers</h3>
+  <p>
+    Fingers are one of the first places people notice a shift of a few kilos, in
+    either direction. If you're sizing during a period of change — a new training
+    routine, a pregnancy, a medication that affects water retention — build in
+    some slack, or plan to have the ring resized later. It's a normal thing to
+    do, not a failure of planning.
+  </p>
+
+  <h3>6. Temperature and salt do the rest</h3>
+  <p>
+    A hot day, a salty meal, a long flight, or a brisk walk can each add a little
+    temporary puffiness. None of these are reasons to panic — they're reasons to
+    measure more than once, on more than one day, before committing to a
+    purchase.
+  </p>
+
+  <hr class="article-rule" />
+
+  <h2>When to let a jeweller take over</h2>
+
+  <p>
+    This tool is a helpful starting point, not a replacement for a professional.
+    Book an in-person check if any of the following apply:
+  </p>
+
+  <ul>
+    <li><strong>The band is very wide</strong> (over 8 mm) or unusually shaped.</li>
+    <li><strong>It's a full eternity band</strong> — stones all the way around usually can't be resized without risking the setting.</li>
+    <li><strong>The metal is titanium or tungsten carbide</strong> — these generally can't be resized at all, so the first measurement has to be right.</li>
+    <li><strong>You're genuinely between sizes</strong> and can't decide which way to lean.</li>
+    <li><strong>It's an heirloom</strong> with engraving or a delicate antique setting.</li>
+  </ul>
+
+  <p>
+    A useful thing to know: most rings can be resized within about two sizes
+    either way. Beyond that, metal has to be added or removed in a way that can
+    thin the band or disturb a pattern. Which is all to say — it's worth getting
+    close on the first try, and it's not the end of the world if you don't.
+  </p>
+
+  <h2>If the ring is a surprise</h2>
+
+  <p>
+    You cannot measure someone's finger while they sleep without it becoming a
+    story they tell for the rest of your life. Instead:
+  </p>
+
+  <ul>
+    <li>Borrow a ring they already wear on the <strong>same finger of the same hand</strong> — this matters more than people realise.</li>
+    <li>Trace the inner circle onto paper and compare it against the on-screen circle later.</li>
+    <li>Press the ring lightly into a bar of soap for a clean impression.</li>
+    <li>Ask a friend, a sibling, or the jeweller who sold them their last ring.</li>
+    <li>If all else fails, size slightly up. Resizing down is almost always the easier and cheaper direction.</li>
+  </ul>
+
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <h3>Can I measure my ring size with a ruler?</h3>
+    <p>
+      Yes — but only accurately if you're measuring a ring you already own.
+      Measure the inner diameter across the widest part of the inside of the
+      band, in millimetres, then match that number to a size chart. Measuring a
+      finger with a ruler directly is far less reliable, because a ruler is
+      straight and a finger is round.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How accurate is the on-screen method?</h3>
+    <p>
+      After calibration with a bank card, the tool is typically accurate to
+      within a fraction of a millimetre. That's well inside the tolerance of a
+      normal ring. The main sources of error are a thick screen protector or
+      viewing the screen at an angle, both of which can be avoided by holding
+      the phone flat and looking straight down.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Is a US 8 the same as a UK P?</h3>
+    <p>
+      Yes — US 8, UK P, and EU 57 all describe the same physical ring, with an
+      inner diameter of about 18.1 mm. The letters and numbers are just different
+      naming systems for the same measurement.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What if I'm between sizes?</h3>
+    <p>
+      For most people, sizing up slightly is the safer choice, especially for
+      wide bands. A slightly loose ring can be adjusted with a sizing bead or
+      resized down later. A ring that's too tight can be uncomfortable from day
+      one and may not be safely resizable if the band is intricate.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Does ring size change with weight?</h3>
+    <p>
+      Yes. Fingers often reflect changes in body weight and water retention
+      before other parts of the body do. If you're in the middle of a significant
+      change, consider waiting, or choose a style that can be resized easily.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Can every ring be resized?</h3>
+    <p>
+      No. Plain bands in gold, silver, or platinum can usually be resized within
+      about two sizes. Full eternity bands, titanium and tungsten rings, and some
+      delicate antique settings generally cannot. If you're unsure, ask the
+      jeweller before you buy — not after.
+    </p>
+  </div>
+
+  <h2>A last, gentler thought</h2>
+
+  <p>
+    There's a lot of pressure wrapped around this particular measurement, and it
+    really doesn't deserve it. A ring size is not a test of how well you know
+    someone. It's a number that can be changed. Jewellers resize rings every
+    single day, and nobody has ever been turned away for being half a size off.
+  </p>
+
+  <p>
+    Get as close as you reasonably can, then let the professionals handle the
+    last millimetre. That's not a shortcut — it's exactly how the people who do
+    this for a living handle it too. If you'd like more detail on any of the
+    points above, the <a href="https://ringsizefind.com/guides.html">guides
+    section</a> goes deeper, and the <a href="https://ringsizefind.com/faq.html">FAQ
+    page</a> answers the questions that come up most often.
+  </p>
+</article>
+
   </main>
 
   <footer>
